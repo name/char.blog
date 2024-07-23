@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 50px auto 30px auto;
+  max-width: 700px;
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.anonymous-pro-regular {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.anonymous-pro-bold {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.anonymous-pro-regular-italic {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.anonymous-pro-bold-italic {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.two-column-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.two-column-list div {
+  flex: 1;
+}
+
+.two-column-list ul {
+  list-style-type: none;
+}
+
+.two-column-list ul li {
+  margin-bottom: 0.5em;
+}
+
+ul {
+  list-style: none;
+}
+
+
+span.chrono-list-date {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.chrono-list-label {
+  flex-shrink: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 1ch;
+}
+
+div.chrono-list {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,18 @@
+version: "3.8"
+
+networks:
+  prod-web-vpc:
+    name: prod-web-vpc
+    external: true
+
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: web
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    networks:
+      - prod-web-vpc
