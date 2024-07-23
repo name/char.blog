@@ -6,11 +6,11 @@ networks:
     external: true
 
 services:
-  web:
+  blog:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: web
+    container_name: blog
     restart: unless-stopped
     environment:
       - NODE_ENV=production
