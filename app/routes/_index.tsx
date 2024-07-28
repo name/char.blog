@@ -21,9 +21,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   const { track } = useLoaderData<typeof loader>();
 
-  if (!track) {
-    return <p>Having problems!!</p>;
-  }
+  const isTrackObject = typeof track === 'object' && track !== null;
 
   return (
     <div className="p-4 divide-y divide-black">
@@ -36,26 +34,32 @@ export default function Index() {
         <aside className="block isolate min-w-0">
           <section className="my-2 border border-black divide-y divide-black">
             <h2 className="font-bold text-xs p-2">Status</h2>
-            <p className="text-xs p-2">thinking ~alot</p>
+            <p className="text-xs p-2">currently relaxing</p>
           </section>
           <section className="my-2 border border-black divide-y divide-black">
             <h2 className="font-bold text-xs p-2">Recently played</h2>
             <div className="p-2">
-              <img className="border border-black" src={track.coverArt} alt={track.title} />
-              <div className="text-xs overflow-hidden">
-                <MusicCard
-                  title={track.title}
-                  artist={track.artist}
-                  coverArt={track.coverArt}
-                  previewUrl={track.previewUrl}
-                  songUrl={track.songUrl}
-                >
-                  <div className="hover:bg-green-400 hover:text-white cursor-pointer mt-2">
-                    <div className="truncate font-bold">{track.title}</div>
-                    <div className="truncate">by {track.artist}</div>
+              {isTrackObject ? (
+                <>
+                  <img className="border border-black" src={track.coverArt || ''} alt={track.title} />
+                  <div className="text-xs overflow-hidden">
+                    <MusicCard
+                      title={track.title}
+                      artist={track.artist}
+                      coverArt={track.coverArt || ''}
+                      previewUrl={track.previewUrl || ''}
+                      songUrl={track.itemUrl || ''}
+                    >
+                      <div className="hover:bg-green-400 hover:text-white cursor-pointer mt-2">
+                        <div className="truncate font-bold">{track.title}</div>
+                        <div className="truncate">by {track.artist}</div>
+                      </div>
+                    </MusicCard>
                   </div>
-                </MusicCard>
-              </div>
+                </>
+              ) : (
+                <p className="text-xs">{track}</p>
+              )}
             </div>
           </section>
           <section className="my-2 border border-black divide-y divide-black">
@@ -83,6 +87,7 @@ export default function Index() {
           <section className="my-2 border border-black divide-y divide-black">
             <h2 className="font-bold text-xs p-2">Recent posts</h2>
             <ul className="p-2 text-xs">
+              <li><a href="/posts/supplements" className="hover:text-green-400">24-07-28 :: supplements</a></li>
               <li><a href="/posts/homelab" className="hover:text-green-400">24-07-23 :: homelab</a></li>
               <li><a href="/posts/new" className="hover:text-green-400">24-07-23 :: new website</a></li>
               <li><a href="/posts/gardens" className="hover:text-green-400">24-07-14 :: digital gardens</a></li>
