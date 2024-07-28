@@ -1,9 +1,4 @@
-version: "3.8"
-
-networks:
-  prod-web-vpc:
-    name: prod-web-vpc
-    external: true
+version: '3'
 
 services:
   blog:
@@ -15,4 +10,8 @@ services:
     environment:
       - NODE_ENV=production
     networks:
-      - prod-web-vpc
+      - alya-prod-public
+
+networks:
+  alya-prod-public:
+    external: true
